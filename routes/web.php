@@ -13,6 +13,19 @@
 |
 */
 
+function isLocal() {
+    return app()->environment('local') ? true : false;
+}
+
 $router->get('/', function () use ($router) {
-    return $router->app->version();
+    // return $router->app->version();
+    return response()->json([
+        'message'   => 'Application is running...'
+    ]);
 });
+
+if(isLocal()) {
+    $router->get('/get-app-key', function() use ($router) {
+        return \Illuminate\Support\Str::random(32);
+    });
+}
