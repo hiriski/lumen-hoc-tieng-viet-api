@@ -16,6 +16,7 @@ class CreateDiscussionStatusesTable extends Migration
         Schema::create('discussion_statuses', function (Blueprint $table) {
             $table->tinyIncrements('id');
             $table->string('name');
+            $table->string('slug')->unique();
         });
     }
 

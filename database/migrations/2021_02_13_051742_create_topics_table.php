@@ -16,6 +16,7 @@ class CreateTopicsTable extends Migration
         Schema::create('topics', function (Blueprint $table) {
             $table->tinyIncrements('id');
             $table->string('name');
+            $table->string('slug')->unique();
         });
     }
 

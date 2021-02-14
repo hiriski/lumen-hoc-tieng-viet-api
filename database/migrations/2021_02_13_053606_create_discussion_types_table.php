@@ -16,6 +16,7 @@ class CreateDiscussionTypesTable extends Migration
         Schema::create('discussion_types', function (Blueprint $table) {
             $table->tinyIncrements('id');
             $table->string('name');
+            $table->string('slug')->unique();
         });
     }
 
