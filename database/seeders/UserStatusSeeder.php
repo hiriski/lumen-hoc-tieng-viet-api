@@ -7,18 +7,19 @@ use App\Models\UserStatus;
 
 class UserStatusSeeder extends Seeder {
 
-    private $table = 'user_statuses';
-
     /**
      * Run the database seeds.
      *
      * @return void
      */
     public function run() {
-        $statuses = ['active', 'inactive'];
-        foreach ($statuses as $index => $value) {
+        $userStatus = [
+            1 => 'Active',
+            2 => 'Inactive'
+        ];
+        foreach ($userStatus as $key => $value) {
             UserStatus::create([
-                'id'    => ++$index,
+                'id'    => $key,
                 'name'  => $value
             ]);
         }
