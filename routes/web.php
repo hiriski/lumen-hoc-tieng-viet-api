@@ -55,3 +55,34 @@ $router->group(['namespace' => 'Auth'], function() use ($router) {
         
     });
 });
+
+
+/*
+|---------------------------------------
+| Discussion Routes
+|---------------------------------------
+*/
+
+$router->group(['prefix' => 'discuss'], function() use ($router) {
+
+    // Get all discussion
+    // matches "/discuss"
+    $router->get('/', 'DiscussionController@index');
+    
+    // Create a new discussion
+    // matches "/discuss"
+    $router->post('/', 'DiscussionController@store');
+    
+    // Get discussion by id
+    // matches "/discuss/{id}"
+    $router->get('/{id}', 'DiscussionController@show');
+
+    // Update discussion by id
+    // matches "/discuss/{id}"
+    $router->put('/{id}', 'DiscussionController@update');
+
+    // Delete discussion by id
+    // matches "/discuss/{id}"
+    $router->delete('/{id}', 'DiscussionController@destroy');
+
+});

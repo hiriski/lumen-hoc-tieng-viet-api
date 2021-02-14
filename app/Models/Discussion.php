@@ -26,11 +26,33 @@ class Discussion extends Model {
     ];
 
     /**
-     * Eager load relationship for every query
+     * Eager load relationship for every query.
      * 
      * @var array
      */
     protected $with = ['user', 'topic', 'type'];
+
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'status_id' => 'integer',
+        'type_id'   => 'integer',
+        'topic_id'  => 'integer',
+        'hits'      => 'integer',
+    ];
+
+    /**
+     * Default attributes
+     * 
+     * @var array
+     */
+    protected $attributes = [
+        'status_id' => 3, // default is active
+        'hits'      => 0,
+    ];
 
     /**
      * Appends custom attributes
