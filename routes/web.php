@@ -29,3 +29,29 @@ if(isLocal()) {
         return \Illuminate\Support\Str::random(32);
     });
 }
+
+
+/*
+|---------------------------------------
+| Authenticate Routes
+|---------------------------------------
+*/
+$router->group(['namespace' => 'Auth'], function() use ($router) {
+    $router->group(['prefix' => '/auth'], function() use ($router) {
+
+        // Register
+        // matches "/auth/register"
+        $router->post('/register', 'RegisterController');
+        
+        // Login
+        // matches "/auth/login"
+        $router->post('/login', 'LoginController');
+        
+        // Check user is authenticated
+        // matches "/auth/get-authenticated-user"
+        $router->group(['middleware' => 'auth'], function() use ($router) {
+            $router->get('/get-authenticated-user', 'AuthController');
+        });
+        
+    });
+});

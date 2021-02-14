@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Lumen\Auth\Authorizable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
+use Illuminate\Support\Str;
 
 class User extends Model implements AuthenticatableContract, AuthorizableContract, JWTSubject {
     use Authenticatable, Authorizable, HasFactory;
@@ -29,6 +30,24 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      */
     protected $hidden = [
         'password',
+    ];
+
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'status_id' => 'integer'
+    ];
+
+    /**
+     * Default attributes
+     * 
+     * @var array
+     */
+    protected $attributes = [
+        'status_id' => 1, // default is active
     ];
 
     /**
